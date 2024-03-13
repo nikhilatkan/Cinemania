@@ -1,0 +1,29 @@
+.nav-container-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+
+.nav-wrapper-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-wrapper-left>.nav-values {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-wrapper-right {
+    padding: 5px;
+    align-items: center;
+}
+
+.nav-values {
+    cursor: pointer;
+}
