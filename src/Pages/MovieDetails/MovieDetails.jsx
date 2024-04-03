@@ -1,15 +1,12 @@
 import React, { useEffect } from "react";
 import "./MovieDetails.css";
+import MovieDetailsComponent from "../../Components/MovieDetailsComponent/MovieDetailsComponent";
 
 const MovieDetails = () => {
 
-    useEffect(() => {
-
-    }, [])
-
     return (
         <div>
-
+            <MovieDetailsComponent />
         </div>
     )
 }

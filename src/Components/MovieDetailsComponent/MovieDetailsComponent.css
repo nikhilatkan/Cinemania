@@ -1,0 +1,110 @@
+.backdrop-img {
+    height: 300px;
+    width: 100%;
+}
+
+.movie-details-container {
+    display: flex;
+}
+
+.poster-img {
+    height: 200px;
+    width: 150px;
+}
+
+.movie-categories {
+    display: flex;
+    padding: 0 10px;
+    font-size: 15px;
+}
+
+.movie-categories>.release-date {
+    padding: 3px;
+}
+
+.movie-categories>.genres-container {
+    padding: 3px;
+}
+
+.movie-categories>.duration {
+    padding: 3px;
+}
+
+.movie-categories>.genres-container>.genres {
+    margin-right: 3px;
+}
+
+/* Imp... Add a comma after each genre except the last one */
+.genres:not(:last-child)::after {
+    content: ',';
+}
+
+.movie-name {
+    padding: 10px 10px 0px 10px;
+}
+
+.movie-name-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.movie-name-year {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Imp... Add a dot separator between the genres */
+.dot-separator {
+    /* display: inline-block; */
+    margin: 0 5px;
+    color: #000;
+    font-size: 20px;
+}
+
+.movie-tagline {
+    font-size: 15px;
+    opacity: .7;
+    padding: 10px;
+}
+
+.overview-container {
+    margin: 0 10px 0;
+}
+
+.overview-text {
+    margin: 0 0 8px;
+    ;
+}
+
+.cast-scroller {
+    width: 50%;
+    display: flex;
+    overflow-x: scroll;
+}
+
+.cast-card {
+    margin: 10px 4px 10px 10px;
+    border: 1px solid black;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.cast-card-image-anchor {
+    min-width: 138px;
+    width: 138px;
+    height: 175px;
+    display: block;
+}
+
+.cast-card-image-container {
+    width: 138px;
+    height: 175px;
+    overflow: hidden;
+
+}
+
+.cast-img {
+    width: 100%;
+    height: 100%;
+}
