@@ -1,21 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GET_ALL_MOVIES_API } from "../../api/getAllMovies.api";
 import "./MoviesList.css";
 import { TMDB_IMAGE_URL } from "../../utils/constant-urls";
 import { createSearchParams, useNavigate } from "react-router-dom";
+import AppContext from "../../AppContainer/context";
+import GET_SEARCHED_MOVIES_API from "../../api/getSearchedMovies.api";
 
 const MoviesList = () => {
 
     const [movieList, setMovieList] = useState({});
     const navigate = useNavigate();
+    const context = useContext(AppContext);
 
     useEffect(() => {
-        async function fetchMoviesList() {
-            const res = await GET_ALL_MOVIES_API();
-            setMovieList(res.data);
+        if (context.state === "") {
+            async function fetchMoviesList() {
+                const res = await GET_ALL_MOVIES_API();
+                setMovieList(res.data);
+            }
+            fetchMoviesList();
+        } else {
+            async function fetchSearchedMovies() {
+                const res = await GET_SEARCHED_MOVIES_API(context.state);
+                setMovieList(res.data);
+            }
+            fetchSearchedMovies();
+
         }
-        fetchMoviesList();
-    }, [])
+    }, [context.state])
+
+    // useEffect(() => {
+    //     async function fetchMoviesList() {
+    //         const res = await GET_ALL_MOVIES_API();
+    //         setMovieList(res.data);
+    //     }
+    //     fetchMoviesList();
+    // }, [])
 
     const handleMovieDetails = (params) => {
         navigate({
