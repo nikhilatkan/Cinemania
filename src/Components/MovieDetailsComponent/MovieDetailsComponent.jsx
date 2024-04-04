@@ -26,7 +26,7 @@ const MovieDetailsComponent = () => {
     return (
 
         <div>
-            {movieData && (
+            {movieData ? (
                 <div>
                     <div className="backdrop-img-container">
                         <img className="backdrop-img" src={`${TMDB_IMAGE_URL}${movieData.backdrop_path}`} />
@@ -74,7 +74,7 @@ const MovieDetailsComponent = () => {
                         </div>
                     )}
                 </div>
-            )}
+            ) : (<div>Loading...</div>)}
         </div>
     )
 }

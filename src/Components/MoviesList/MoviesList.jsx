@@ -5,17 +5,20 @@ import { TMDB_IMAGE_URL } from "../../utils/constant-urls";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import AppContext from "../../AppContainer/context";
 import GET_SEARCHED_MOVIES_API from "../../api/getSearchedMovies.api";
+import Pagination from "../Pagination/Pagination";
 
 const MoviesList = () => {
 
     const [movieList, setMovieList] = useState({});
     const navigate = useNavigate();
     const context = useContext(AppContext);
+    const [pageNumber, setPageNumber] = useState(1);
+    console.log(pageNumber);
 
     useEffect(() => {
         if (context.state === "") {
             async function fetchMoviesList() {
-                const res = await GET_ALL_MOVIES_API();
+                const res = await GET_ALL_MOVIES_API(pageNumber);
                 setMovieList(res.data);
             }
             fetchMoviesList();
@@ -27,7 +30,7 @@ const MoviesList = () => {
             fetchSearchedMovies();
 
         }
-    }, [context.state])
+    }, [context.state, pageNumber])
 
     // useEffect(() => {
     //     async function fetchMoviesList() {
@@ -48,15 +51,21 @@ const MoviesList = () => {
 
     return (
         <div>
+            <div className="filters-conatiner">
+                <div>
+
+                </div>
+            </div>
             <div>
                 <div className="movie-poster-container">
-                    {Object.keys(movieList).length != 0 && movieList.results.length > 0 && movieList.results.map((items, key) => (
+                    {Object.keys(movieList).length != 0 && movieList.results.length > 0 && movieList.results?.map((items, key) => (
                         <div key={key} className="movie-poster-wrapper">
                             <img className="movie-poster" src={`${TMDB_IMAGE_URL}${items.poster_path}`} alt="Movie" onClick={() => handleMovieDetails(items.id)} />
                         </div>
 
                     ))}
                 </div>
+                <Pagination pageNumber={pageNumber} setPageNumber={setPageNumber} NumberOfPages={movieList.total_pages} />
             </div>
         </div>
     )
